@@ -15,7 +15,8 @@ export function NoteList({
   onNoteContentChange,
   onNoteTitleChange,
   onSaveNote,
-  onCancelEdit
+  onCancelEdit,
+  onSort
 }) {
   return (
     <div className="md:col-span-9">
@@ -31,6 +32,15 @@ export function NoteList({
             >
               <Plus className="h-5 w-5" />
               New Note
+            </button>
+
+            
+            <button
+              onClick={onSort}
+              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+            >
+              <Plus className="h-5 w-5" />
+              sort
             </button>
           </div>
 

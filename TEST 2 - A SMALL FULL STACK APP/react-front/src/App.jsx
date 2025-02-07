@@ -28,6 +28,7 @@ function App() {
     const loadedNotebooks = await api.getNotebooks();
     setNotebooks(loadedNotebooks);
   };
+  
 
   const loadNotes = async (notebookId) => {
     const loadedNotes = await api.getNotes(notebookId);
@@ -42,8 +43,21 @@ function App() {
     await loadNotebooks();
   };
 
+
+  const handleSort = async () => {
+    const loadNotebooks = async () => {
+      const loadedNotebooks = await api.getNotebooks();
+      console.log(loadedNotebooks)
+      // const SortedList = loadedNotebooks.sort((a, b) => a.title - b.title);
+      const SortedList = loadedNotebooks.sort((a, b) => a.updatedAt - b.updatedAt);
+      console.log(SortedList)
+      // const SortedList = loadedNotebooks.sort();
+      setNotebooks(SortedList);
+    };
+  };
+
   const handleDeleteNotebook = async (id) => {
-    api.deleteNotebook(id);
+    await api.deleteNotebook(id);
     loadNotebooks();
     if (selectedNotebook?.id === id) {
       setSelectedNotebook(null);
@@ -125,6 +139,7 @@ function App() {
             noteTitle={noteTitle}
             noteContent={noteContent}
             onAddNote={handleAddNote}
+            onSort={handleSort}
             onEditNote={handleEditNote}
             onDeleteNote={handleDeleteNote}
             onNoteContentChange={handleNoteContentChange}
