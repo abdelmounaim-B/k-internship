@@ -14,3 +14,6 @@ const handleSort = async () => {
   };
 
   i tryed to sort using title and last updated and it didnt work somhow, even the cosole.log i couldnt see it on the console, so i tryed and thats what i came up with.
+
+
+  i just found out that that insted of sorting notes, i sorted notbooks ^^. my bed
